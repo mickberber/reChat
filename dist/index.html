@@ -2,13 +2,6 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
-    <script src="/horizon/horizon.js"></script>
-    <script>
-      var horizon = Horizon();
-      horizon.connect();
-      const chat = horizon("messages");
-    </script>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'></link>
     <link rel="stylesheet" href="./style.css"></link>
   </head>
@@ -16,17 +9,4 @@
    <div class='attach'></div>
   </body>
   <script src='./bundle.js'></script>
-  <script>
-  $(document).on('ready', function() {
-    console.log('ready');
-    $('button').on('click', function() {
-      let message = {
-        text: 'push button sent message',
-        author: '@steedhelix'
-      };
-      console.log(message);
-      chat.store(message);
-    })
-  })
-  </script>
 </html>
