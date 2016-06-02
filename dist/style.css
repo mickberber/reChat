@@ -1,6 +1,6 @@
 .center {
     margin: auto;
-    width: 60%;
-    border: 3px solid;
+    border: 1px solid;
+    border-radius: 2px;
     padding: 10px;
 }

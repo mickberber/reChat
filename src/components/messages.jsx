@@ -6,18 +6,18 @@ class Messages extends Component {
     super(props);
 
     this.state = {
-      convo: [{text: 'this is text'},
-              {text: 'this is some text'},
-              {text: 'this is more text'},
-              {text: 'this is other text'}]
+      convo: [{text: 'this is text', author: '@steedhelix'},
+              {text: 'this is some text', author: '@steedhelix'},
+              {text: 'this is more text', author: '@steedhelix'},
+              {text: 'this is other text', author: '@steedhelix'}]
     };
   }
   render() {
-    let msgsjsx = this.state.convo.map(function(message){
-      return <Message msg={message} />
+    let msgsjsx = this.state.convo.map(function(message, i){
+      return <Message msg={message} key={i} />
     });
     return (
-      <div>
+      <div className='container-fluid'>
         {msgsjsx}
       </div>
     );

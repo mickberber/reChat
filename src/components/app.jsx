@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Messages from './messages';
 
 class App extends Component {
+
   render() {
     return (
         <div>
