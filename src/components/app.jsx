@@ -8,8 +8,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      author: false,
-      text: false
+      author: '',
+      text: ''
     }
   }
 
@@ -24,6 +24,10 @@ class App extends Component {
   }
 
   sendMessage() {
+    if(this.state.text === '' || this.state.author === '') {
+      alert('Invalid Submission');
+      return;
+    }
     let message = {
       text: this.state.text,
       author: this.state.author
@@ -37,8 +41,8 @@ class App extends Component {
           <form>
             <div className='center'>
               <button onClick={this.sendMessage.bind(this)}>Send Message</button>
-              <input onChange={this.handleChangeAuthor.bind(this)}></input>
-              <input onChange={this.handleChangeText.bind(this)}></input>
+              <input onChange={this.handleChangeAuthor.bind(this)} placeholder='Name'></input>
+              <input onChange={this.handleChangeText.bind(this)} placeholder='Message'></input>
             </div>
           </form>
           <Messages chat={chat}/>
