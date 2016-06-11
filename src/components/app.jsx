@@ -15,12 +15,10 @@ class App extends Component {
   }
 
   handleChangeAuthor(event) {
-    console.log(event.target.value);
     this.setState({author: event.target.value});
   }
 
   handleChangeText(event) {
-    console.log(event.target.value);
     this.setState({text: event.target.value});
   }
 
@@ -31,7 +29,8 @@ class App extends Component {
     }
     let message = {
       text: this.state.text,
-      author: this.state.author
+      author: this.state.author,
+      date: new Date.now()
     }
     chat.store(message);
   }
