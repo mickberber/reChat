@@ -4,19 +4,16 @@ import Message from './message';
 class Messages extends Component {
   constructor(props) {
     super(props);
-    this.chat = props.chat;
+    this.props = props;
     this.state = {
       convo: []
     };
   }
 
   componentDidMount() {
-    this.chat.watch().subscribe(
+    this.props.chat.order('date', 'descending').watch().subscribe(
       (messages) => {
-        let convo = messages.map(function(message) {
-          return message
-        });
-        this.setState({convo: convo});
+        this.setState({convo: messages});
       },
       (err) => {
         console.log(err);

@@ -30,7 +30,7 @@ class App extends Component {
     let message = {
       text: this.state.text,
       author: this.state.author,
-      date: new Date.now()
+      date: new Date().toString()
     }
     chat.store(message);
   }
