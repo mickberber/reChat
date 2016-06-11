@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Messages from './messages';
+import Messages from './msgs/messages';
+import ChatContainer from './chat/chatContainer';
 const Horizon = require('@horizon/client');
 const horizon = Horizon({ secure: false });
 const chat = horizon('messages');
@@ -38,13 +39,11 @@ class App extends Component {
   render() {
     return (
         <div>
-          <form>
-            <div className='center'>
-              <button onClick={this.sendMessage.bind(this)}>Send Message</button>
-              <input onChange={this.handleChangeAuthor.bind(this)} placeholder='Name'></input>
-              <input onChange={this.handleChangeText.bind(this)} placeholder='Message'></input>
-            </div>
-          </form>
+          <ChatContainer
+            handleChangeAuthor={this.handleChangeAuthor}
+            handleChangeText={this.handleChangeText}
+            sendMessage={this.sendMessage}
+          />
           <Messages chat={chat}/>
         </div>
       );
