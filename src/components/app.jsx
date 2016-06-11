@@ -9,9 +9,21 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      convo: [],
       author: '',
       text: ''
     }
+  }
+
+  componentDidMount() {
+    chat.order('date', 'descending').watch().subscribe(
+      (messages) => {
+        this.setState({convo: messages});
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   handleChangeAuthor(event) {
@@ -43,7 +55,7 @@ class App extends Component {
             handleChangeText={this.handleChangeText}
             sendMessage={this.sendMessage}
           />
-          <Messages chat={chat}/>
+          <Messages convo={this.state.convo}/>
         </div>
       );
   }
