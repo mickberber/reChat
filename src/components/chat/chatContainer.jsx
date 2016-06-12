@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 export default class ChatContainer extends Component {
   constructor(props) {
     super(props);
-    this.sendMessage = props.sendMessage.bind(this);
-    this.handleChangeAuthor = props.handleChangeAuthor.bind(this);
-    this.handleChangeText = props.handleChangeText.bind(this);
+    this.sendMessage = props.sendMessage;
+    this.handleChangeAuthor = props.handleChangeAuthor;
+    this.handleChangeText = props.handleChangeText;
   }
 
   render() {
