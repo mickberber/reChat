@@ -16,9 +16,12 @@ class App extends Component {
   }
 
   componentDidMount() {
-    chat.order('date', 'descending').watch().subscribe(
+    chat.watch().subscribe(
       (messages) => {
-        this.setState({convo: messages});
+        let allMSGS = messages.sort(function(a, b){
+          return b.date - a.date;
+        })
+        this.setState({convo: allMSGS});
       },
       (err) => {
         console.log(err);
@@ -39,10 +42,11 @@ class App extends Component {
       alert('Invalid Submission');
       return;
     }
+    let now = Date.now();
     let message = {
       text: this.state.text,
       author: this.state.author,
-      date: new Date().toString()
+      date: now
     }
     chat.store(message);
   }
