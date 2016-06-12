@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Messages from './msgs/messages';
 import ChatContainer from './chat/chatContainer';
+import Footer from './footer';
+//import Header from './header';
 const Horizon = require('@horizon/client');
 const horizon = Horizon({ secure: false });
 const chat = horizon('messages');
@@ -60,6 +62,7 @@ class App extends Component {
             sendMessage={this.sendMessage.bind(this)}
           />
           <Messages convo={this.state.convo}/>
+          <Footer />
         </div>
       );
   }
