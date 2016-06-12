@@ -9,7 +9,7 @@ export default class Message extends Component {
   render() {
     return (<div className='row'>
               <div className='col-xs-2 center'>{this.props.msg.author}</div>
-              <div className='col-xs-3 center'>{Moment(this.props.msg.date).format("DD-MM-YYYY HH:mm:ss")}</div>
+              <div className='col-xs-3 center'>{Moment(this.props.msg.date).format('MMMM Do YYYY, h:mm:ss a')}</div>
               <div className='col-xs-7 center'>{this.props.msg.text}</div>
             </div>);
   }
