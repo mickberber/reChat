@@ -12,7 +12,7 @@ export default class ChatContainer extends Component {
     return (
       <form>
         <div className='center'>
-          <button onClick={this.sendMessage}>Send Message</button>
+          <button className='btn btn-primary' onClick={this.sendMessage}>Send Message</button>
           <input onChange={this.handleChangeAuthor} placeholder='Name'></input>
           <input onChange={this.handleChangeText} placeholder='Message'></input>
         </div>
