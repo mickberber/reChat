@@ -55,9 +55,9 @@ class App extends Component {
     return (
         <div>
           <ChatContainer
-            handleChangeAuthor={this.handleChangeAuthor}
-            handleChangeText={this.handleChangeText}
-            sendMessage={this.sendMessage}
+            handleChangeAuthor={this.handleChangeAuthor.bind(this)}
+            handleChangeText={this.handleChangeText.bind(this)}
+            sendMessage={this.sendMessage.bind(this)}
           />
           <Messages convo={this.state.convo}/>
         </div>
