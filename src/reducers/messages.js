@@ -1,4 +1,10 @@
-export const Messages = (state, action) => {
+const initialState = {
+  author: '',
+  date: '',
+  text: ''
+}
+
+export default function Messages(state = initialState, action) {
   switch(action.type) {
     case 'ADD_MESSAGE':
       return {
@@ -6,5 +12,7 @@ export const Messages = (state, action) => {
         date: action.date,
         text: action.text
       }
+    default:
+      return state
   }
 }
