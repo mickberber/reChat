@@ -15,6 +15,9 @@ class App extends Component {
       author: '',
       text: ''
     }
+    this.handleChangeAuthor = this.handleChangeAuthor.bind(this);
+    this.handleChangeText = this.handleChangeText.bind(this);
+    this.sendMessage = this.sendMessage.bind(this);
   }
 
   componentDidMount() {
@@ -57,9 +60,9 @@ class App extends Component {
     return (
         <div>
           <ChatContainer
-            handleChangeAuthor={this.handleChangeAuthor.bind(this)}
-            handleChangeText={this.handleChangeText.bind(this)}
-            sendMessage={this.sendMessage.bind(this)}
+            handleChangeAuthor={this.handleChangeAuthor}
+            handleChangeText={this.handleChangeText}
+            sendMessage={this.sendMessage}
           />
           <Messages convo={this.state.convo}/>
           <Footer />
