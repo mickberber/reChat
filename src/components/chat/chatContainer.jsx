@@ -1,22 +1,13 @@
 import React, { Component } from 'react';
 
-export default class ChatContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.sendMessage = props.sendMessage;
-    this.handleChangeAuthor = props.handleChangeAuthor;
-    this.handleChangeText = props.handleChangeText;
-  }
-
-  render() {
-    return (
-      <form>
-        <div className='center'>
-          <button className='btn btn-primary' onClick={this.sendMessage}>Send Message</button>
-          <input onChange={this.handleChangeAuthor} placeholder='Name'></input>
-          <input onChange={this.handleChangeText} placeholder='Message'></input>
-        </div>
-      </form>
-    )
-  }
+export default function ChatContainer({ handleChangeAuthor, handleChangeText, sendMessage }) {
+  return (
+    <form>
+      <div className='center'>
+        <button className='btn btn-primary' onClick={sendMessage}>Send Message</button>
+        <input onChange={handleChangeAuthor} placeholder='Name'></input>
+        <input onChange={handleChangeText} placeholder='Message'></input>
+      </div>
+    </form>
+  )
 }
