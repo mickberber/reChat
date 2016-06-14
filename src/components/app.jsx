@@ -21,12 +21,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    chat.watch().subscribe(
+    chat.order('date', 'descending').limit(100).watch().subscribe(
       (messages) => {
-        let allMSGS = messages.sort(function(a, b){
-          return b.date - a.date;
-        })
-        this.setState({convo: allMSGS});
+        this.setState({convo: messages});
       },
       (err) => {
         console.log(err);
