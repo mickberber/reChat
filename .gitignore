@@ -1,1 +1,3 @@
 /node_modules
+/rethinkdb_data
+/dist/bundle.js
