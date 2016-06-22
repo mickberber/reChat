@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import Messages from './msgs/messages';
-import ChatContainer from './chat/chatContainer';
-import Footer from './footer';
 //import Header from './header';
 const Horizon = require('@horizon/client');
 const horizon = Horizon({ secure: false });
 const chat = horizon('messages');
+
+import Login from './login/login';
+import ChatContainer from './chat/chatContainer';
+import Footer from './footer';
+
 
 class App extends Component {
   constructor(props) {
@@ -13,8 +15,15 @@ class App extends Component {
     this.state = {
       convo: [],
       author: '',
-      text: ''
+      text: '',
+      chatIsHidden : 'hidden',
+      loginIsHidden : 'visible'
     }
+
+    this.loginAttempt = this.loginAttempt.bind(this);
+    this.handleChangeAuthor = this.handleChangeAuthor.bind(this);
+    this.handleChangeText = this.handleChangeText.bind(this);
+    this.sendMessage = this.sendMessage.bind(this);
   }
 
   componentDidMount() {
@@ -53,15 +62,25 @@ class App extends Component {
     chat.store(message);
   }
 
+  loginAttempt() {
+    if(true) {
+      this.state.loginIsHidden = 'hidden';
+      this.state.chatIsHidden = 'visible';
+      this.setState({loginIsHidden : 'hidden', chatIsHidden : 'visible'});
+    }
+  }
+
   render() {
     return (
         <div>
+          <Login isHidden={this.state.loginIsHidden} loginAttempt={this.loginAttempt}/>
           <ChatContainer
-            handleChangeAuthor={this.handleChangeAuthor.bind(this)}
-            handleChangeText={this.handleChangeText.bind(this)}
-            sendMessage={this.sendMessage.bind(this)}
+            handleChangeAuthor={this.handleChangeAuthor}
+            handleChangeText={this.handleChangeText}
+            sendMessage={this.sendMessage}
+            isHidden={this.state.chatIsHidden}
+            convo={this.state.convo}
           />
-          <Messages convo={this.state.convo}/>
           <Footer />
         </div>
       );
