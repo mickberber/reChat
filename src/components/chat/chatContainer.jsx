@@ -15,7 +15,7 @@ export default class ChatContainer extends Component {
       <div style={{visibility: this.props.isHidden}}>
         <form>
           <div className='center'>
-            <button className='btn btn-primary' onClick={this.sendMessage}>Send Message</button>
+            <div className='btn btn-primary' onClick={this.sendMessage}>Send Message</div>
             <input onChange={this.handleChangeAuthor} placeholder='Name'></input>
             <input onChange={this.handleChangeText} placeholder='Message'></input>
           </div>
