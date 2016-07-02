@@ -1,3 +1,5 @@
 /node_modules
 /rethinkdb_data
 /dist/bundle.js
+horizon-cert.pem
+horizon-key.pem
