@@ -8,14 +8,18 @@ export default class Login extends Component {
 
   }
   render() {
-    return (<Link to='/app'>
-              <FacebookLogin
-              appId='537663683084269'
-              autoLoad={true}
-              fields="name,email,picture"
-              callback={this.responseFacebook} 
-              />
-            </Link>);
+    return (<div>
+              <Link to='/app'>
+                <FacebookLogin
+                appId='537663683084269'
+                autoLoad={true}
+                fields="name,email,picture"
+                callback={this.responseFacebook} 
+                />
+              </Link>
+              <img src='./assets/rechat.png' />
+            </div>
+            );
   }
 
 }
