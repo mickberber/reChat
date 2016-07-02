@@ -1,9 +1,8 @@
 import React from 'react';
 
-export default function Deets() {
-    let user = window.cheating;
+export default function Deets({ user }) {
     return (
-            <div>
+            <div className='center'>
               <div>{user.name}</div>
               <div>{user.email}</div>
               <img src={user.picture.data.url} />              

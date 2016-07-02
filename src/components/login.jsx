@@ -4,8 +4,8 @@ import FacebookLogin from 'react-facebook-login';
 
 export default class Login extends Component {
   responseFacebook(response) {
-    window.cheating = response;
-    console.log(response);
+    window.storage = response;
+
   }
   render() {
     return (<Link to='/app'>

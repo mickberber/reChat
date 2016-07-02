@@ -7,8 +7,6 @@ const Horizon = require('@horizon/client');
 const horizon = Horizon({ secure: false });
 const chat = horizon('messages');
 
-import Deets from './user/deets';
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -36,10 +34,11 @@ class App extends Component {
       return;
     }
     let now = Date.now();
+    let storage = window.storage;
     let message = {
-      picture: window.cheating.picture.data.url,
+      picture: storage.picture.data.url,
       text: text,
-      author: window.cheating.name,
+      author: storage.name,
       date: now
     }
     chat.store(message);
@@ -49,9 +48,9 @@ class App extends Component {
     return (
         <div className='container-fluid'>
           <div className='row'>
-          <Deets />
           <ChatContainer
             sendMessage={this.sendMessage}
+            user={window.storage}
           />
           </div>
           <div className='row'>
