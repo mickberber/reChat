@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Messages from './msgs/messages';
 import ChatContainer from './chat/chatContainer';
 import Footer from './footer';
-//import Header from './header';
+import UserDash from './UserDash';
+
 const Horizon = require('@horizon/client');
 const horizon = Horizon({ secure: false });
 const chat = horizon('messages');
@@ -47,7 +48,9 @@ class App extends Component {
   render() {
     return (
         <div className='container-fluid'>
-          <div className='row'>
+          <UserDash storage={window.storage} />
+          <div className='row' style={{height: '55px'}}/>
+          <div className='row' style={{marginTop: '0px', marginBottom: '5px'}}>
           <ChatContainer
             sendMessage={this.sendMessage}
             user={window.storage}

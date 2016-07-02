@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Deets from '../user/deets';
 
 let text = '';
 
@@ -15,12 +14,9 @@ export default function ChatContainer({ sendMessage, user }) {
     text = '';
   }
   return (
-    <div>
-      <Deets user={user} />
-      <form onSubmit={sendAndClear} className='center input-group'>
-        <button className='btn btn-primary' >Send Message</button>
-        <input className='form-control' onChange={(event) => { text = handleChange(event)} } placeholder='Message'></input>
-      </form>
-    </div>
+    <form style={{display: 'inline', marginLeft: '30%'}} onSubmit={sendAndClear}>
+      <button className='btn btn-primary' >Send Message</button>
+      <input style={{height: '35px', width: '350px'}} onChange={(event) => { text = handleChange(event)} } placeholder='Message'></input>
+    </form>
   )
 }
