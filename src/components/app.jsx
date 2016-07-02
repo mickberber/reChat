@@ -11,12 +11,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      convo: [],
-      author: '',
-      text: ''
+      convo: []
     }
-    this.handleChangeAuthor = this.handleChangeAuthor.bind(this);
-    this.handleChangeText = this.handleChangeText.bind(this);
+
     this.sendMessage = this.sendMessage.bind(this);
   }
 
@@ -31,23 +28,15 @@ class App extends Component {
     );
   }
 
-  handleChangeAuthor(event) {
-    this.setState({author: event.target.value});
-  }
-
-  handleChangeText(event) {
-    this.setState({text: event.target.value});
-  }
-
-  sendMessage() {
-    if(this.state.text === '' || this.state.author === '') {
+  sendMessage(author, text) {
+    if(text === '' || author === '') {
       alert('Invalid Submission');
       return;
     }
     let now = Date.now();
     let message = {
-      text: this.state.text,
-      author: this.state.author,
+      text: text,
+      author: author,
       date: now
     }
     chat.store(message);
@@ -57,8 +46,6 @@ class App extends Component {
     return (
         <div>
           <ChatContainer
-            handleChangeAuthor={this.handleChangeAuthor}
-            handleChangeText={this.handleChangeText}
             sendMessage={this.sendMessage}
           />
           <Messages convo={this.state.convo}/>

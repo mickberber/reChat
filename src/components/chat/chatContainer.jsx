@@ -1,13 +1,26 @@
 import React, { Component } from 'react';
 
-export default function ChatContainer({ handleChangeAuthor, handleChangeText, sendMessage }) {
+let text = '';
+let author = '';
+
+const handleChange = (e, val) => {
+  return e.target.value;
+}
+
+export default function ChatContainer({ sendMessage }) {
+  const sendAndClear = (e) => {
+    e.preventDefault();
+    e.target.children[1].value = '';
+    e.target.children[2].value = '';
+    sendMessage(author, text);
+    text = '';
+    author = '';
+  }
   return (
-    <form>
-      <div className='center input-group'>
-        <button className='btn btn-primary' onClick={sendMessage}>Send Message</button>
-        <input className='form-control' onChange={handleChangeAuthor} placeholder='Name'></input>
-        <input className='form-control' onChange={handleChangeText} placeholder='Message'></input>
-      </div>
+    <form onSubmit={sendAndClear} className='center input-group'>
+      <button className='btn btn-primary' >Send Message</button>
+      <input className='form-control' onChange={(event) => { author = handleChange(event) } } placeholder='Name'></input>
+      <input className='form-control' onChange={(event) => { text = handleChange(event)} } placeholder='Message'></input>
     </form>
   )
 }
