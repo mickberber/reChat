@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   entry: [
     'babel-polyfill',
@@ -9,6 +11,11 @@ module.exports = {
     filename: './dist/bundle.js'
   },
   module: {
+    preLoaders: [{
+      test: /\.(js|jsx)?$/,
+      loader: 'eslint',
+      include: path.resolve(__dirname, 'src')
+    }],
     loaders: [{
       exclude: /node_modules/,
       loader: 'babel-loader',
